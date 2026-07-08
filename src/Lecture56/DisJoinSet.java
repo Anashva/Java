@@ -1,0 +1,53 @@
+package Lecture56;
+
+import java.util.*;
+
+public class DisJoinSet {
+    class Node{
+        int val;
+        int rank;
+        Node parent;
+        Node(){
+
+        }
+    }
+    private HashMap<Integer,Node> mp=new HashMap<>();
+//    create
+    public void create(int v){
+        Node nn=new Node();
+        nn.val=v;
+        nn.rank=0;
+        nn.parent=nn;
+        mp.put(v,nn);
+    }
+//    find-representative element
+    public int find(int v){
+        Node node=mp.get(v);
+        return find(node).val;
+    }
+    private Node find(Node node){
+        if(node.parent==node){
+            return node;
+        }
+        Node n=find(node.parent);
+        node.parent=n;//path compression after some time it become O(1)
+        return n;
+    }
+//    union
+    public void union(int v1,int v2){
+        Node node1=mp.get(v1);//v1 vtx kahan pe create hua hai
+        Node node2=mp.get(v2);//v2 vtx kaha pre create hua hai
+        Node re1=find(node1);//v1 ka re node hai
+        Node re2=find(node2);//v1 ka re node hai
+        if(re1.rank==re2.rank){
+            re1.parent=re2;
+            re2.rank++;
+        }
+        else if(re1.rank<re2.rank){
+            re1.parent=re2;
+        }
+        else{
+            re2.parent=re1;
+        }
+    }
+}
