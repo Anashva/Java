@@ -71,10 +71,12 @@ public class linkedlist {
         System.out.println(".");
     }
     public int getFirst(){
+
         return head.val;
     }
 //    O(1)
     public int getLast(){
+
         return tail.val;
     }
 //    O(1)

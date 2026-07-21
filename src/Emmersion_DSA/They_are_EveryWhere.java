@@ -12,7 +12,7 @@ public class They_are_EveryWhere {
         }
         int distinct = mp.size();
         int start = 0;
-        int end = 0;
+         int end = 0;
         int ans = Integer.MAX_VALUE;
         int c = 0;
         mp.clear();
