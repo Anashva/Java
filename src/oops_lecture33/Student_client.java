@@ -13,6 +13,13 @@ public class Student_client {
         s1.age=22;
         s1.intro();
         s1.say_hey("dhoni");
+        System.out.println();
+
+        Class<?> c=s.getClass();
+        System.out.println(c.getName());
+        System.out.println(c.getMethods());
+        System.out.println(c.getSuperclass());
+        System.out.println(Object.class.getSuperclass());
 
     }
     static {
